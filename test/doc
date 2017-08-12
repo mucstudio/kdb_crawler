@@ -1,0 +1,21 @@
+月销量 累计评价
+tm-ind-panel
+
+价格
+tm-fcs-panel
+tm-price-panel J_StrPriceModBox
+tm-price
+
+
+tb-detail-hd 
+Python参考手册(第4版·修订版) 新华书店正版畅销图书籍  文轩网
+
+tm-ind-panel tm-fcs-panel 为同一级
+
+
+
+detail/J_DetailMeta/tm-clear/tb-property/tb-wrap/tm-fcs-panel
+detail/J_DetailMeta/tm-clear/tb-property/tb-wrap/tm-ind-panel
+
+bd/grid-s5m0 tm-clear/col-main tm-clear/mainwrap/attributes/attributes-list/J_AttrUL
+<li title ....>
