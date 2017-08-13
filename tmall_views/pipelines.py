@@ -5,32 +5,29 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
+from scrapy.exceptions import DropItem
 
-import sqlite3
-import datetime
-
-def insert_data(date, views):
-    conn = sqlite3.connect('tmall_views.db')
-    c = conn.cursor()
-
-    # Create table
-    c.execute('''CREATE TABLE IF NOT EXISTS views
-                 (date text PRIMARY KEY, views integer)''')
-
-    # Insert a row of data
-    try:
-        c.execute("INSERT INTO views VALUES ('{0}',{1})".format(date, views))
-    except sqlite3.IntegrityError:
-        pass
-    # Save (commit) the changes
-    conn.commit()
-
-    # We can also close the connection if we are done with it.
-    # Just be sure any changes have been committed or they will be lost.
-    conn.close()
+from util import text
 
 class TmallViewsPipeline(object):
     def process_item(self, item, spider):
-        if item['item_name'] == '访问':
-            insert_data(datetime.date.today(), item['item'])
-        return item
+        # class__ = self.__class__
+        if item is not None:
+            if item["p_standard_price"] is None:
+                item["p_standard_price"] = item["p_shop_price"]
+            if item["p_shop_price"] is None:
+                item["p_shop_price"] = item["p_standard_price"]
+
+            item["p_collect_count"] = text.to_int(item["p_collect_count"])
+            item["p_comment_count"] = text.to_int(item["p_comment_count"])
+            item["p_month_sale_count"] = text.to_int(item["p_month_sale_count"])
+            item["p_sale_count"] = text.to_int(item["p_sale_count"])
+            item["p_standard_price"] = text.to_string(item["p_standard_price"], "0")
+            item["p_shop_price"] = text.to_string(item["p_shop_price"], "0")
+            item["p_pay_count"] = item["p_pay_count"] if item["p_pay_count"] is not "-" else "0"
+            print('+'*50)
+            print(item)
+            print('+'*50)
+            return item
+        else:
+            raise DropItem("Item is None %s" % item)
