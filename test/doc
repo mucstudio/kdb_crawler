@@ -19,3 +19,27 @@ detail/J_DetailMeta/tm-clear/tb-property/tb-wrap/tm-ind-panel
 
 bd/grid-s5m0 tm-clear/col-main tm-clear/mainwrap/attributes/attributes-list/J_AttrUL
 <li title ....>
+
+
+{'p_cid': '50512007',
+ 'p_collect_count': '8',
+ 'p_comment_count': '2',
+ 'p_month_sale_count': '0',
+ 'p_name': 'Python参考手册（第4版&amp;middot;修订版）程序设计算法Python基础教程核心编程经典著作',
+ 'p_nid': '539853070197',
+ 'p_pay_count': 0,
+ 'p_raw_html': '',
+ 'p_sale_count': '0',
+ 'p_shop_price': '89.00',
+ 'p_standard_price': '89.00',
+ 'p_url': 'https://detail.tmall.com/item.htm?spm=a1z10.3-b.w4011-9986777119.15.79c15d8JGRW05&id=539853070197&rn=934e2d1ecc4ab188c0bb95e26877b606&abbucket=4',
+ 's_created': '',
+ 's_modified': '',
+ 's_name': '人民邮电出版社官方旗舰店',
+ 's_raw_html': '',
+ 's_rid': '33',
+ 's_seller_id': 2145487409,
+ 's_seller_nick': '人民邮电出版社官方旗舰店',
+ 's_shop_id': 112127406,
+ 's_type': 2,
+ 's_url': 'https://rmydcbs.tmall.com'}

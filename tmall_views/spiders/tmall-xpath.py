@@ -28,7 +28,7 @@ class ToScrapeSpiderXPath(Spider):
     allowed_domains = ['tmall.com', 'taobao.com']
     start_urls = [
         # 'https://detail.tmall.com/item.htm?spm=a1z10.3-b.w4011-9986777119.15.79c15d8JGRW05&id=539853070197&rn=934e2d1ecc4ab188c0bb95e26877b606&abbucket=4',
-        'file:///home/kylin/workspace/kdb/kdb_crawler/test/test.html',
+        # 'file:///home/kylin/workspace/kdb/kdb_crawler/test/test.html',
     ]
     total_items = 0
 
@@ -42,6 +42,10 @@ class ToScrapeSpiderXPath(Spider):
         self.driver = web_driver
         # self.data_time = dt
         # url = "https://s.taobao.com/search?s=3872&q={q}&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a21bo.50862.201856-taobao-item.1&ie=utf8&style=list&initiative_id=tbindexz_" + self.data_time
+        from data_model.table import T_Basic_ShopBook
+        start_urls = T_Basic_ShopBook.query_url_list()
+        # print(url_list)
+        #exit(0)
         # for value in keys.split(","):
         #     #self.start_urls.append(url.format(q=value))
         #     pass
@@ -149,6 +153,11 @@ class ToScrapeSpiderXPath(Spider):
         json_data = json.loads(src_data)
         item_do = json_data["itemDO"]
         item = TmallViewsItem()
+        #item['p_isbn'] = selector.xpath("//div[@id='J_AttrList']/ul[@id='J_AttrUL']/li").re("(isbn|ISBN).*:\xa0(.*)</li>")[1]
+        #item['p_isbn'] = selector.xpath("//div[@id='J_AttrList']/ul[@id='J_AttrUL']/li").re("(isbn|ISBN).*: (.*)</li>")[1]
+        item['p_isbn'] = selector.xpath("//div[@id='J_AttrList']/ul[@id='J_AttrUL']/li").re("(isbn|ISBN).*:.(.*)</li>")[1]
+        #print(item['p_isbn'])
+        #item['p_isbn'] = selector.xpath("//div[@id='J_AttrList']/ul[@id='J_AttrUL']/li").re_first("ISBN.*:\xa0(.*)</li>")[1]
         item['s_type'] = 2
         item['s_rid'] = item_do["rootCatId"]
         item['s_created'] = ""

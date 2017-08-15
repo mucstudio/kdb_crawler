@@ -16,6 +16,7 @@ class TmallViewsItem(scrapy.Item):
     """
     淘宝天猫数据Item
     """
+    p_isbn = Field()
     p_name = Field()
     p_comment_count = Field()
     p_sale_count = Field()
