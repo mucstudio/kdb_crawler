@@ -38,14 +38,16 @@ class ToScrapeSpiderXPath(Spider):
         self.error_count = 0
         # if keys is None or dt is None:
         #     return
+        file.create_dirs("log/")
         file.delete_dirs("log/")
         self.driver = web_driver
         # self.data_time = dt
         # url = "https://s.taobao.com/search?s=3872&q={q}&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a21bo.50862.201856-taobao-item.1&ie=utf8&style=list&initiative_id=tbindexz_" + self.data_time
         from data_model.table import T_Basic_ShopBook
-        start_urls = T_Basic_ShopBook.query_url_list()
+        # url_list = T_Basic_ShopBook.query_url_list()
         # print(url_list)
-        #exit(0)
+        # exit(0)
+        self.start_urls = T_Basic_ShopBook.query_url_list()
         # for value in keys.split(","):
         #     #self.start_urls.append(url.format(q=value))
         #     pass

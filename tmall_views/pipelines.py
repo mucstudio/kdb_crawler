@@ -34,15 +34,23 @@ class TmallViewsPipeline(object):
 class MysqlPipeline(object):
     def process_item(self, item, spider):
         import datetime
+        import re
         from data_model.table import T_Data
+
+        if item["p_standard_price"] is None:
+            item["p_standard_price"] = item["p_shop_price"]
+
+        if item["p_shop_price"] is None:
+            item["p_shop_price"] = item["p_standard_price"]
+
         value_list = []
         # s_url
-        shop = re.match('http[s]?://([a-zA-z]+).tmall.com/.*', item['s_url']).groups()[0]
+        shop = re.match('http[s]?://([a-zA-z]+).tmall.com*', item['s_url']).groups()[0]
         # isbn
         book = item['p_isbn']
         date = datetime.date.today()
         value_list.append(('price', item['p_shop_price']))
-        value_list.append(('discount', round(10*item['p_shop_price']/item['p_standard_price'],2)))
+        value_list.append(('discount', round(10*float(item['p_shop_price'])/float(item['p_standard_price']),2)))
         value_list.append(('sale', item['p_month_sale_count']))
         value_list.append(('comment', item['p_comment_count']))
         value_list.append(('inv', 0))
