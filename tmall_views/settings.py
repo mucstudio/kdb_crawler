@@ -70,6 +70,9 @@ ITEM_PIPELINES = {
     'tmall_views.pipelines.MysqlPipeline': 300,
 }
 
+#DOWNLOADER_MIDDLEWARES = {
+#    'tmall_views.middlewares.JSPageMiddlewares': 543,
+#}
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
