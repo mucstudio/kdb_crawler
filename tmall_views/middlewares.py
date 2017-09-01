@@ -55,14 +55,14 @@ class TmallViewsSpiderMiddleware(object):
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
 
-from selenium import webdriver
-from scrapy.http import HtmlResponse
+# from selenium import webdriver
+# from scrapy.http import HtmlResponse
 
-class JSPageMiddlewaresa(object):
-    def process_request(self, request, spider):
-        if spider.name = 'tmall-xpath':
-            web_driver = webdriver.Chrome("/usr/bin/chromedriver")
-            web_driver.get(request.url)
-            import time
-            time.sleep(10)
-            return HtmlResponse(url=web_driver.current_url, body=web_driver.page_source, encoding='utf-8', request=request)
+# class JSPageMiddlewaresa(object):
+#    def process_request(self, request, spider):
+#        if spider.name = 'tmall-xpath':
+#            web_driver = webdriver.Chrome("/usr/bin/chromedriver")
+#            web_driver.get(request.url)
+#            import time
+#            time.sleep(10)
+#            return HtmlResponse(url=web_driver.current_url, body=web_driver.page_source, encoding='utf-8', request=request)

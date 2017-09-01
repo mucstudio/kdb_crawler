@@ -7,7 +7,23 @@ from scrapy.utils.project import get_project_settings
 from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium import webdriver
-web_driver = webdriver.Chrome("/usr/bin/chromedriver")
+from selenium.webdriver.chrome.options import Options
+
+#chromedriver="/usr/bin/chromedriver"
+#l_option = Options()
+#l_option.add_argument('headless')
+##l_option.add_argument('window-size=1200x600')
+##l_option.add_argument('disable-notifications')
+#l_option.add_argument('remote-debugging-port=9222')
+#l_option.add_argument('disable-gpu')
+##l_option.binary_location = chromedriver
+##l_option.binary_location = "/usr/bin/chromium-browser"
+#l_option.binary_location = "/usr/bin/google-chrome"
+#
+#web_driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=l_option)
+# web_driver = webdriver.Chrome(chromedriver)
+web_driver = webdriver.Firefox()
+
 
 import json
 
